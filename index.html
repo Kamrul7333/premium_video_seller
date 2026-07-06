@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Video Collection</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Telegram Premium Dark Theme Palette */
+    :root {
+      --tg-bg: #182533;
+      --tg-sec-bg: #202b36;
+      --tg-accent: #2481cc;
+      --tg-accent-hover: #2a96e6;
+      --tg-text: #f5f5f5;
+      --tg-text-muted: #7e8b99;
+      --tg-card-bg: #1e2c3a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Tahoma', sans-serif;
+      background-color: var(--tg-bg);
+      color: var(--tg-text);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    /* Premium Header */
+    header {
+      background-color: var(--tg-sec-bg);
+      padding: 25px 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    header h1 {
+      font-size: 26px;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    
+    header p {
+      color: var(--tg-text-muted);
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* RGB Animated Border Keyframes */
+    @keyframes rgbGlow {
+      0% { border-color: #ff0055; box-shadow: 0 0 10px rgba(255, 0, 85, 0.2); }
+      33% { border-color: #00ff66; box-shadow: 0 0 10px rgba(0, 255, 102, 0.2); }
+      66% { border-color: #0099ff; box-shadow: 0 0 10px rgba(0, 153, 255, 0.2); }
+      100% { border-color: #ff0055; box-shadow: 0 0 10px rgba(255, 0, 85, 0.2); }
+    }
+
+    /* ১/ উপরের ডিটেলস বক্স (RGB Border) */
+    .details-box {
+      background: var(--tg-sec-bg);
+      border: 2px solid #ff0055;
+      border-radius: 16px;
+      padding: 25px;
+      margin: 20px 0 30px 0;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      animation: rgbGlow 6s linear infinite;
+    }
+
+    .details-box p {
+      font-size: 18px;
+      color: #e2e8f0;
+      font-weight: 500;
+    }
+
+    /* Section Title Styles */
+    .section-title {
+      font-size: 20px;
+      margin: 40px 0 20px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      border-left: 4px solid var(--tg-accent);
+      padding-left: 12px;
+    }
+
+    /* Image Gallery Grid */
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+
+    /* ছবির বক্সে RGB বর্ডার */
+    .image-card {
+      background: var(--tg-card-bg);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 2px solid #ff0055;
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      animation: rgbGlow 6s linear infinite;
+    }
+
+    .image-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Video Section Container (RGB Border) */
+    .video-section {
+      background: var(--tg-sec-bg);
+      padding: 20px;
+      border-radius: 16px;
+      margin-bottom: 40px;
+      border: 2px solid #ff0055;
+      animation: rgbGlow 6s linear infinite;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* Fixed 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #000;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Pricing Section (RGB Border) */
+    .pricing-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .pricing-card {
+      background: var(--tg-sec-bg);
+      border-radius: 20px;
+      padding: 40px 35px;
+      width: 100%;
+      max-width: 520px;
+      border: 2px solid #ff0055;
+      text-align: center;
+      animation: rgbGlow 6s linear infinite;
+    }
+
+    h2.card-title {
+      color: #60a5fa;
+      margin-bottom: 30px;
+      font-size: 26px;
+      letter-spacing: 1px;
+      border-left: none;
+      padding-left: 0;
+      justify-content: center;
+    }
+
+    /* Clean Hyperlinks for Cards */
+    .plan-link {
+      text-decoration: none;
+      display: block;
+      margin: 14px 0;
+    }
+
+    .plan {
+      background: rgba(24, 37, 51, 0.8);
+      padding: 18px 20px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+      border-left: 5px solid #3b82f6;
+    }
+
+    .plan:hover {
+      transform: translateX(10px);
+      background: rgba(59, 130, 246, 0.15);
+      border-left-color: #60a5fa;
+    }
+
+    .duration-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+    }
+
+    .duration {
+      font-size: 18px;
+      font-weight: 600;
+      color: #e0f2fe;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* ২/ কিনতে ক্লিক করুন বাটন টেক্সট */
+    .buy-now-text {
+      font-size: 11px;
+      background: var(--tg-accent);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-left: 28px;
+      font-weight: normal;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: 700;
+      color: #22d3ee;
+    }
+
+    .permanent {
+      border-left-color: #a78bfa;
+      background: rgba(167, 139, 250, 0.08);
+    }
+
+    .permanent:hover {
+      border-left-color: #c4b5fd;
+      background: rgba(167, 139, 250, 0.18);
+    }
+
+    .permanent .price {
+      color: #c4b5fd;
+    }
+    
+    .permanent .buy-now-text {
+      background: #a78bfa;
+    }
+
+    .notice {
+      font-size: 12px;
+      color: var(--tg-text-muted);
+      margin-top: 20px;
+    }
+
+    /* Responsive Mobile UI */
+    @media (max-width: 500px) {
+      .image-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px;
+      }
+      .image-card img {
+        height: 150px;
+      }
+      .details-box p {
+        font-size: 15px;
+      }
+      .pricing-card {
+        padding: 30px 15px;
+      }
+      .plan {
+        padding: 14px 12px;
+      }
+      .duration {
+        font-size: 15px;
+      }
+      .price {
+        font-size: 18px;
+      }
+      .buy-now-text {
+        margin-left: 24px;
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1><i class="fab fa-telegram-plane" style="color: var(--tg-accent); margin-right: 8px;"></i> Video Store Premium</h1>
+    <p>আপনার পছন্দের প্রিমিয়াম প্যাকেজটি সিলেক্ট করুন</p>
+  </header>
+
+  <div class="container">
+    
+    <div class="details-box">
+      <p><i class="fas fa-info-circle" style="color: #60a5fa; margin-right: 8px;"></i> আমাদের কাছে আপনি পাবেন সকল ধরনের ভিডিও প্যাকেজ একসাথে -
+রে*প , হি*জাবি ,লে*সবিয়ান , পি*চ্চি*দের , দেশি ,  বিদেশি প/ন ও ভাইরাল সব কালেকশন 
+.</p>
+    </div>
+    
+    <h2 class="section-title"><i class="fas fa-images"></i> গ্যালারি কালেকশন</h2>
+    <div class="image-gallery">
+      <div class="image-card"><img src="https://i.ibb.co.com/5WfByYKj/IMG-20260706-111409-461.jpg" alt="Preview 1"></div>
+      <div class="image-card"><img src="https://i.ibb.co.com/bMFKJrHS/IMG-20260706-111409-009.jpg" alt="Preview 2"></div>
+      <div class="image-card"><img src="https://i.ibb.co.com/CCS58r4/IMG-20260706-111322-426.jpg" alt="Preview 3"></div>
+      <div class="image-card"><img src="https://i.ibb.co.com/YFs3DJw8/IMG-20260706-111321-767.jpg" alt="Preview 4"></div>
+      <div class="image-card"><img src="https://i.ibb.co.com/jNyrn2y/IMG-20260706-111322-730.jpg" alt="Preview 5"></div>
+      <div class="image-card"><img src="https://i.ibb.co.com/BVfhFqPD/IMG-20260706-111322-194.jpg" alt="Preview 6"></div>
+      <div class="image-card"><img src="https://i.ibb.co.com/jk9YCfpk/IMG-20260706-111322-149.jpg" alt="Preview 7"></div>
+    </div>
+
+    <h2 class="section-title"><i class="fas fa-play-circle"></i> ডেমো ভিডিও প্রিভিউ</h2>
+    <div class="video-section">
+      <div class="video-wrapper">
+        <iframe allowfullscreen="allowfullscreen" class="b-hbp-video b-uploaded" frameborder="0" height="322" id="BLOGGER-video-f6fe5cdcfd496aed-15630" mozallowfullscreen="mozallowfullscreen" src="https://www.blogger.com/video.g?token=AD6v5dy2-hymqx1qaCBll1a8KE8k3rQ1rAGAZA36pjXY5Anh0tOKZVgJ4NaAk0Yj-9UIdWGkhtc5peHNdqFazxuVx9vJRZKynQwVI5gxJWkQJKo8rnJ4euOefyTIWlrD4ZDtUIVNp7Fd&amp;origin=underworldviedo11233.blogspot.com" webkitallowfullscreen="webkitallowfullscreen" width="400"></iframe>
+      </div>
+    </div>
+
+    <h2 class="section-title"><i class="fas fa-shopping-cart"></i> কিনার বিস্তারিত ডিটেলস</h2>
+    <div class="pricing-container">
+      <div class="pricing-card">
+        <h2 class="card-title">🌟 সদস্যতা প্যাকেজ</h2>
+        
+        <a href="https://t.me/Genghis_Khan5?text=আমি%20৭%20দিনের%20২৫০%20টাকার%20প্রিমিয়াম%20নিতে%20চাচ্ছি" target="_blank" class="plan-link">
+          <div class="plan">
+            <div class="duration-group">
+              <span class="duration"><i class="far fa-calendar-alt" style="color: #60a5fa;"></i> ১ সপ্তাহ</span>
+              <span class="buy-now-text">কিনতে ক্লিক করুন</span>
+            </div>
+            <span class="price">২৫০ টাকা</span>
+          </div>
+        </a>
+        
+        <a href="https://t.me/Genghis_Khan5?text=আমি%20১৫%20দিনের%20৩৫০%20টাকার%20প্রিমিয়াম%20নিতে%20চাচ্ছি" target="_blank" class="plan-link">
+          <div class="plan">
+            <div class="duration-group">
+              <span class="duration"><i class="far fa-calendar-minus" style="color: #60a5fa;"></i> ১৫ দিন</span>
+              <span class="buy-now-text">কিনতে ক্লিক করুন</span>
+            </div>
+            <span class="price">৩৫০ টাকা</span>
+          </div>
+        </a>
+        
+        <a href="https://t.me/Genghis_Khan5?text=আমি%20১%20মাসের%20৫০০%20টাকার%20প্রিমিয়াম%20নিতে%20চাচ্ছি" target="_blank" class="plan-link">
+          <div class="plan">
+            <div class="duration-group">
+              <span class="duration"><i class="far fa-calendar-check" style="color: #60a5fa;"></i> ১ মাস</span>
+              <span class="buy-now-text">কিনতে ক্লিক করুন</span>
+            </div>
+            <span class="price">৫০০ টাকা</span>
+          </div>
+        </a>
+        
+        <a href="https://t.me/Genghis_Khan5?text=আমি%20পার্মানেন্ট%20১২৫০%20টাকার%20প্রিমিয়াম%20নিতে%20চাচ্ছি" target="_blank" class="plan-link">
+          <div class="plan permanent">
+            <div class="duration-group">
+              <span class="duration"><i class="fas fa-infinity" style="color: #c4b5fd;"></i> পার্মানেন্ট</span>
+              <span class="buy-now-text">কিনতে ক্লিক করুন</span>
+            </div>
+            <span class="price">১২৫০ টাকা</span>
+          </div>
+        </a>
+
+        <p class="notice">* যেকোনো প্যাকেজের ওপর ক্লিক করলে ক্রয়ের জন্য অটো-মেসেজ সহ টেলিগ্রাম ওপেন হবে।</p>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
