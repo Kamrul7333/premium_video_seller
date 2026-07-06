@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Premium Video Collection</title>
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* Telegram Premium Dark Theme Palette */
@@ -67,13 +68,13 @@
       100% { border-color: #ff0055; box-shadow: 0 0 10px rgba(255, 0, 85, 0.2); }
     }
 
-    /* ১/ উপরের ডিটেলস বক্স (RGB Border) */
+    /* উপরের ডিটেলস বক্স (RGB Border) */
     .details-box {
       background: var(--tg-sec-bg);
       border: 2px solid #ff0055;
       border-radius: 16px;
       padding: 25px;
-      margin: 20px 0 30px 0;
+      margin: 20px 0 20px 0;
       text-align: center;
       box-shadow: 0 10px 25px rgba(0,0,0,0.3);
       animation: rgbGlow 6s linear infinite;
@@ -83,6 +84,28 @@
       font-size: 18px;
       color: #e2e8f0;
       font-weight: 500;
+    }
+
+    /* গাইড বক্স (কিভাবে কিনবেন) */
+    .how-to-buy-box {
+      background: var(--tg-sec-bg);
+      border: 2px solid #ff0055;
+      border-radius: 16px;
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      animation: rgbGlow 6s linear infinite;
+      text-align: center;
+    }
+
+    .how-to-buy-box h3 {
+      font-size: 20px;
+      color: #60a5fa;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
 
     /* Section Title Styles */
@@ -102,7 +125,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 18px;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
 
     /* ছবির বক্সে RGB বর্ডার */
@@ -126,6 +149,54 @@
       display: block;
     }
 
+    /* বাচ্চাদের স্পেশাল কালেকশন বক্স */
+    .kids-special-box {
+      background: var(--tg-sec-bg);
+      border: 2px solid #ff0055;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      animation: rgbGlow 6s linear infinite;
+    }
+
+    /* ছবির সাইজ ৫০% বা অর্ধেক ছোট রাখা হয়েছে */
+    .kids-img-side {
+      flex: 1;
+      max-width: 150px; 
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .kids-img-side img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .kids-text-side {
+      flex: 1;
+    }
+
+    .kids-text-side h3 {
+      font-size: 24px;
+      color: #ff9f43;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .kids-text-side p {
+      color: #e2e8f0;
+      font-size: 16px;
+    }
+
     /* Video Section Container (RGB Border) */
     .video-section {
       background: var(--tg-sec-bg);
@@ -134,24 +205,20 @@
       margin-bottom: 40px;
       border: 2px solid #ff0055;
       animation: rgbGlow 6s linear infinite;
+      text-align: center;
     }
 
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%; /* Fixed 16:9 Aspect Ratio */
-      height: 0;
-      overflow: hidden;
-      border-radius: 12px;
-      background: #000;
-    }
-
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
+    /* Blogger ভিডিওর নিজস্ব সাইজ ও সেন্টারিং */
+    .blogger-video-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 100%;
-      height: 100%;
-      border: 0;
+      overflow-x: auto;
+    }
+
+    .blogger-video-container iframe {
+      max-width: 100%;
     }
 
     /* Pricing Section (RGB Border) */
@@ -223,7 +290,7 @@
       gap: 10px;
     }
 
-    /* ২/ কিনতে ক্লিক করুন বাটন টেক্সট */
+    /* কিনতে ক্লিক করুন বাটন টেক্সট */
     .buy-now-text {
       font-size: 11px;
       background: var(--tg-accent);
@@ -276,6 +343,17 @@
       .details-box p {
         font-size: 15px;
       }
+      .kids-special-box {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+      .kids-img-side {
+        max-width: 120px;
+      }
+      .how-to-buy-box h3 {
+        font-size: 18px;
+      }
       .pricing-card {
         padding: 30px 15px;
       }
@@ -297,6 +375,7 @@
 </head>
 <body>
 
+  <!-- Top Bar Layout -->
   <header>
     <h1><i class="fab fa-telegram-plane" style="color: var(--tg-accent); margin-right: 8px;"></i> Video Store Premium</h1>
     <p>আপনার পছন্দের প্রিমিয়াম প্যাকেজটি সিলেক্ট করুন</p>
@@ -304,12 +383,20 @@
 
   <div class="container">
     
+    <!-- ডিটেলস বক্স সেকশন -->
     <div class="details-box">
-      <p><i class="fas fa-info-circle" style="color: #60a5fa; margin-right: 8px;"></i> আমাদের কাছে আপনি পাবেন সকল ধরনের ভিডিও প্যাকেজ একসাথে -
-রে*প , হি*জাবি ,লে*সবিয়ান , পি*চ্চি*দের , দেশি ,  বিদেশি প/ন ও ভাইরাল সব কালেকশন 
-.</p>
+      <p><i class="fas fa-info-circle" style="color: #60a5fa; margin-right: 8px;"></i> আমাদের কাছে আপনি পাবেন সকল ধরনের ভিডিও প্যাকেজ একসাথে .......</p>
+    </div>
+
+    <!-- গাইড ভিডিও বক্স -->
+    <div class="how-to-buy-box">
+      <h3><i class="fas fa-question-circle"></i> কিভাবে কিনবেন ? দেখে নিন</h3>
+      <div class="blogger-video-container">
+        <div class="separator" style="clear: both; text-align: center;"><iframe allowfullscreen="allowfullscreen" class="b-hbp-video b-uploaded" frameborder="0" height="322" id="BLOGGER-video-f27d09ded6eb33d0-12767" mozallowfullscreen="mozallowfullscreen" src="https://www.blogger.com/video.g?token=AD6v5dxGZ74NbGD_or2oshnpKA4DdWWw55XjotnR8MaL8lJlEk7iRznBnjQXNtA3y2ruiUFKkWDBNJRTSZ99xv8rgTLMHi50yJaCByLTPBlZ5jVydAmihgNa6VjpdAo83HBUqDFCiA73&amp;origin=underworldviedo11233.blogspot.com" webkitallowfullscreen="webkitallowfullscreen" width="400"></iframe></div>
+      </div>
     </div>
     
+    <!-- ছবিগুলোর আকর্ষণীয় গ্যালারি -->
     <h2 class="section-title"><i class="fas fa-images"></i> গ্যালারি কালেকশন</h2>
     <div class="image-gallery">
       <div class="image-card"><img src="https://i.ibb.co.com/5WfByYKj/IMG-20260706-111409-461.jpg" alt="Preview 1"></div>
@@ -321,18 +408,32 @@
       <div class="image-card"><img src="https://i.ibb.co.com/jk9YCfpk/IMG-20260706-111322-149.jpg" alt="Preview 7"></div>
     </div>
 
+    <!-- বাচ্চাদের স্পেশাল কালেকশন বক্স -->
+    <div class="kids-special-box">
+      <div class="kids-img-side">
+        <img src="https://i.ibb.co.com/k2PL52vt/20260706-155238.jpg" alt="20260706-155238" border="0" />
+      </div>
+      <div class="kids-text-side">
+        <h3><i class="fas fa-child"></i> বাচ্চাদের স্পেশাল কালেকশন</h3>
+        <p>শিশুদের জন্য বিনোদনমূলক এবং শিক্ষণীয় বিশেষ ভিডিও প্যাকেজগুলো উপভোগ করতে আমাদের এই এক্সক্লুসিভ কালেকশনটি দেখতে পারেন।</p>
+      </div>
+    </div>
+
+    <!-- ডেমো ভিডিও Iframe সেকশন -->
     <h2 class="section-title"><i class="fas fa-play-circle"></i> ডেমো ভিডিও প্রিভিউ</h2>
     <div class="video-section">
-      <div class="video-wrapper">
+      <div class="blogger-video-container">
         <iframe allowfullscreen="allowfullscreen" class="b-hbp-video b-uploaded" frameborder="0" height="322" id="BLOGGER-video-f6fe5cdcfd496aed-15630" mozallowfullscreen="mozallowfullscreen" src="https://www.blogger.com/video.g?token=AD6v5dy2-hymqx1qaCBll1a8KE8k3rQ1rAGAZA36pjXY5Anh0tOKZVgJ4NaAk0Yj-9UIdWGkhtc5peHNdqFazxuVx9vJRZKynQwVI5gxJWkQJKo8rnJ4euOefyTIWlrD4ZDtUIVNp7Fd&amp;origin=underworldviedo11233.blogspot.com" webkitallowfullscreen="webkitallowfullscreen" width="400"></iframe>
       </div>
     </div>
 
+    <!-- কিনার বিস্তারিত ও মেম্বারশিপ প্যাকেজ -->
     <h2 class="section-title"><i class="fas fa-shopping-cart"></i> কিনার বিস্তারিত ডিটেলস</h2>
     <div class="pricing-container">
       <div class="pricing-card">
         <h2 class="card-title">🌟 সদস্যতা প্যাকেজ</h2>
         
+        <!-- ১ সপ্তাহ প্যাকেজ -->
         <a href="https://t.me/Genghis_Khan5?text=আমি%20৭%20দিনের%20২৫০%20টাকার%20প্রিমিয়াম%20নিতে%20চাচ্ছি" target="_blank" class="plan-link">
           <div class="plan">
             <div class="duration-group">
@@ -343,6 +444,7 @@
           </div>
         </a>
         
+        <!-- ১৫ দিন প্যাকেজ -->
         <a href="https://t.me/Genghis_Khan5?text=আমি%20১৫%20দিনের%20৩৫০%20টাকার%20প্রিমিয়াম%20নিতে%20চাচ্ছি" target="_blank" class="plan-link">
           <div class="plan">
             <div class="duration-group">
@@ -353,6 +455,7 @@
           </div>
         </a>
         
+        <!-- ১ মাস প্যাকেজ -->
         <a href="https://t.me/Genghis_Khan5?text=আমি%20১%20মাসের%20৫০০%20টাকার%20প্রিমিয়াম%20নিতে%20চাচ্ছি" target="_blank" class="plan-link">
           <div class="plan">
             <div class="duration-group">
@@ -363,6 +466,7 @@
           </div>
         </a>
         
+        <!-- পার্মানেন্ট প্যাকেজ -->
         <a href="https://t.me/Genghis_Khan5?text=আমি%20পার্মানেন্ট%20১২৫০%20টাকার%20প্রিমিয়াম%20নিতে%20চাচ্ছি" target="_blank" class="plan-link">
           <div class="plan permanent">
             <div class="duration-group">
