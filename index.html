@@ -86,6 +86,46 @@
       font-weight: 500;
     }
 
+    /* নতুন সেলার কন্টাক্ট বাটন ডিজাইন */
+    .seller-btn-container {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0 25px 0;
+    }
+
+    .seller-contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #2481cc, #1d6fa5);
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 50px;
+      box-shadow: 0 4px 15px rgba(36, 129, 204, 0.4);
+      transition: all 0.3s ease;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .seller-contact-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(36, 129, 204, 0.6);
+      background: linear-gradient(135deg, #2a96e6, #2481cc);
+    }
+
+    .seller-contact-btn i {
+      font-size: 20px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
     /* গাইড বক্স (কিভাবে কিনবেন) */
     .how-to-buy-box {
       background: var(--tg-sec-bg);
@@ -331,6 +371,13 @@
       margin-top: 20px;
     }
 
+    /* হিট কাউন্টার সেকশন স্টাইল */
+    .counter-section {
+      margin-top: 50px;
+      padding: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
     /* Responsive Mobile UI */
     @media (max-width: 500px) {
       .image-gallery {
@@ -342,6 +389,12 @@
       }
       .details-box p {
         font-size: 15px;
+      }
+      .seller-contact-btn {
+        padding: 12px 20px;
+        font-size: 14px;
+        width: 100%;
+        justify-content: center;
       }
       .kids-special-box {
         flex-direction: column;
@@ -386,8 +439,14 @@
     <!-- ডিটেলস বক্স সেকশন -->
     <div class="details-box">
       <p><i class="fas fa-info-circle" style="color: #60a5fa; margin-right: 8px;"></i> আমাদের কাছে আপনি পাবেন সকল ধরনের ভিডিও প্যাকেজ একসাথে -
-রে*প , হি*জাবি ,লে*সবিয়ান , পি*চ্চি*দের , দেশি ,  বিদেশি প/ন ও ভাইরাল সব কালেকশন 
-      </p>
+রে*প , হি*জাবি ,লে*সবিয়ান , পি*চ্চি*দের , দেশি ,  বিদেশি প/ন ও ভাইরাল সব কালেকশন </p>
+    </div>
+
+    <!-- সেলারের সাথে যোগাযোগ করার নতুন বাটন -->
+    <div class="seller-btn-container">
+      <a href="https://t.me/Genghis_Khan5" target="_blank" class="seller-contact-btn">
+        <i class="fab fa-telegram-plane"></i> সেলারের সাথে সরাসরি কথা বলতে ক্লিক করুন
+      </a>
     </div>
 
     <!-- গাইড ভিডিও বক্স -->
@@ -417,7 +476,7 @@
       </div>
       <div class="kids-text-side">
         <h3><i class="fas fa-child"></i> বাচ্চাদের স্পেশাল কালেকশন</h3>
-
+        <p>শিশুদের জন্য বিনোদনমূলক এবং শিক্ষণীয় বিশেষ ভিডিও প্যাকেজগুলো উপভোগ করতে আমাদের এই এক্সক্লুসিভ কালেকশনটি দেখতে পারেন।</p>
       </div>
     </div>
 
@@ -481,6 +540,11 @@
 
         <p class="notice">* যেকোনো প্যাকেজের ওপর ক্লিক করলে ক্রয়ের জন্য অটো-মেসেজ সহ টেলিগ্রাম ওপেন হবে।</p>
       </div>
+    </div>
+
+    <!-- হিট কাউন্টার সেকশন -->
+    <div class="counter-section">
+      <div align=center><a href='https://www.counter12.com'><img src='https://www.counter12.com/img-9B7wZAzBy401Bz90-9.gif' border='0' alt='free web counter'></a><script type='text/javascript' src='https://www.counter12.com/ad.js?id=9B7wZAzBy401Bz90'></script><br><a href='https://meuip.page/qual-e-o-meu-ip/' target='_blank'><img src='https://img.meuip.page/selo-3x36W0zxyCWAcW0Z.gif' alt='veja seu ip' border='0'></a></div>
     </div>
 
   </div>
