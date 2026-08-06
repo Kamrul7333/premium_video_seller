@@ -3,19 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Premium Video Collection</title>
+  <title>Premium Video Collection - Special Offer</title>
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Telegram Premium Dark Theme Palette */
     :root {
-      --tg-bg: #182533;
-      --tg-sec-bg: #202b36;
-      --tg-accent: #2481cc;
-      --tg-accent-hover: #2a96e6;
-      --tg-text: #f5f5f5;
-      --tg-text-muted: #7e8b99;
-      --tg-card-bg: #1e2c3a;
+      --primary-glow: #00f2fe;
+      --secondary-glow: #4facfe;
+      --accent-gold: #ffb703;
+      --tg-bg: #0f172a;
+      --tg-card-bg: #1e293b;
+      --tg-text: #f8fafc;
     }
 
     * {
@@ -25,441 +23,330 @@
     }
 
     body {
-      font-family: 'Segoe UI', 'Tahoma', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: var(--tg-bg);
       color: var(--tg-text);
       line-height: 1.6;
       padding-bottom: 60px;
     }
 
-    /* Premium Header */
-    header {
-      background-color: var(--tg-sec-bg);
-      padding: 25px 20px;
+    /* Top Notice Bar / Timer */
+    .timer-bar {
+      background: linear-gradient(90deg, #ff0055, #ff5050);
+      color: #fff;
       text-align: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      padding: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    header {
+      background: #1e293b;
+      padding: 30px 20px;
+      text-align: center;
+      border-bottom: 2px solid #334155;
     }
 
     header h1 {
-      font-size: 26px;
+      font-size: 28px;
       color: #fff;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-    
-    header p {
-      color: var(--tg-text-muted);
-      font-size: 14px;
-      margin-top: 6px;
+      font-weight: 800;
     }
 
     .container {
-      max-width: 900px;
+      max-width: 850px;
       margin: 0 auto;
       padding: 20px;
     }
 
-    /* RGB Animated Border Keyframes */
-    @keyframes rgbGlow {
-      0% { border-color: #ff0055; box-shadow: 0 0 10px rgba(255, 0, 85, 0.2); }
-      33% { border-color: #00ff66; box-shadow: 0 0 10px rgba(0, 255, 102, 0.2); }
-      66% { border-color: #0099ff; box-shadow: 0 0 10px rgba(0, 153, 255, 0.2); }
-      100% { border-color: #ff0055; box-shadow: 0 0 10px rgba(255, 0, 85, 0.2); }
+    /* Animated RGB Border Box */
+    @keyframes borderRotate {
+      0% { border-color: #00f2fe; box-shadow: 0 0 15px rgba(0, 242, 254, 0.3); }
+      50% { border-color: #ff007f; box-shadow: 0 0 15px rgba(255, 0, 127, 0.3); }
+      100% { border-color: #00f2fe; box-shadow: 0 0 15px rgba(0, 242, 254, 0.3); }
     }
 
-    /* উপরের ডিটেলস বক্স (RGB Border) */
     .details-box {
-      background: var(--tg-sec-bg);
-      border: 2px solid #ff0055;
+      background: var(--tg-card-bg);
+      border: 2px solid #00f2fe;
       border-radius: 16px;
-      padding: 25px;
-      margin: 20px 0 20px 0;
+      padding: 20px;
+      margin: 20px 0;
       text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      animation: rgbGlow 6s linear infinite;
+      animation: borderRotate 4s infinite linear;
     }
 
     .details-box p {
-      font-size: 18px;
-      color: #e2e8f0;
-      font-weight: 500;
+      font-size: 17px;
+      font-weight: 600;
     }
 
-    /* নতুন সেলার কন্টাক্ট বাটন ডিজাইন */
+    /* High-Converting Main CTA Button */
     .seller-btn-container {
       display: flex;
       justify-content: center;
-      margin: 10px 0 25px 0;
+      margin: 25px 0;
     }
 
     .seller-contact-btn {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      background: linear-gradient(135deg, #2481cc, #1d6fa5);
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
       color: #fff;
       text-decoration: none;
-      padding: 14px 28px;
-      font-size: 16px;
-      font-weight: 600;
+      padding: 16px 32px;
+      font-size: 18px;
+      font-weight: 700;
       border-radius: 50px;
-      box-shadow: 0 4px 15px rgba(36, 129, 204, 0.4);
+      box-shadow: 0 0 20px rgba(0, 198, 255, 0.5);
       transition: all 0.3s ease;
-      border: 2px solid rgba(255, 255, 255, 0.1);
+      animation: pulseBtn 2s infinite;
     }
 
-    .seller-contact-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(36, 129, 204, 0.6);
-      background: linear-gradient(135deg, #2a96e6, #2481cc);
-    }
-
-    .seller-contact-btn i {
-      font-size: 20px;
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
+    @keyframes pulseBtn {
       0% { transform: scale(1); }
-      50% { transform: scale(1.15); }
+      50% { transform: scale(1.04); }
       100% { transform: scale(1); }
     }
 
-    /* গাইড বক্স (কিভাবে কিনবেন) */
-    .how-to-buy-box {
-      background: var(--tg-sec-bg);
-      border: 2px solid #ff0055;
-      border-radius: 16px;
-      padding: 25px;
+    .seller-contact-btn:hover {
+      background: linear-gradient(135deg, #0072ff, #00c6ff);
+    }
+
+    /* Trust Badges */
+    .trust-badges {
+      display: flex;
+      justify-content: space-around;
+      background: #1e293b;
+      padding: 15px;
+      border-radius: 12px;
       margin-bottom: 30px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      animation: rgbGlow 6s linear infinite;
+      border: 1px solid #334155;
+    }
+
+    .trust-item {
       text-align: center;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+
+    .trust-item i {
+      font-size: 20px;
+      color: var(--accent-gold);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* How to Buy Section */
+    .how-to-buy-box {
+      background: var(--tg-card-bg);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 30px;
+      text-align: center;
+      border: 1px solid #334155;
     }
 
     .how-to-buy-box h3 {
-      font-size: 20px;
-      color: #60a5fa;
+      color: var(--primary-glow);
       margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
     }
 
-    /* Section Title Styles */
+    /* Gallery Grid */
     .section-title {
       font-size: 20px;
-      margin: 40px 0 20px 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      margin: 30px 0 15px 0;
       color: #fff;
-      border-left: 4px solid var(--tg-accent);
-      padding-left: 12px;
+      border-left: 4px solid var(--primary-glow);
+      padding-left: 10px;
     }
 
-    /* Image Gallery Grid */
     .image-gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 18px;
-      margin-bottom: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
     }
 
-    /* ছবির বক্সে RGB বর্ডার */
     .image-card {
       background: var(--tg-card-bg);
-      border-radius: 14px;
+      border-radius: 12px;
       overflow: hidden;
-      border: 2px solid #ff0055;
-      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      animation: rgbGlow 6s linear infinite;
-    }
-
-    .image-card:hover {
-      transform: translateY(-6px);
+      border: 1px solid #334155;
     }
 
     .image-card img {
       width: 100%;
-      height: 220px;
+      height: 200px;
       object-fit: cover;
       display: block;
     }
 
-    /* বাচ্চাদের স্পেশাল কালেকশন বক্স */
+    /* Kids Special Box */
     .kids-special-box {
-      background: var(--tg-sec-bg);
-      border: 2px solid #ff0055;
+      background: var(--tg-card-bg);
       border-radius: 16px;
       padding: 20px;
-      margin-bottom: 40px;
+      margin: 30px 0;
       display: flex;
       align-items: center;
-      gap: 25px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      animation: rgbGlow 6s linear infinite;
+      gap: 20px;
+      border: 1px dashed var(--accent-gold);
     }
 
-    /* ছবির সাইজ ৫০% বা অর্ধেক ছোট রাখা হয়েছে */
     .kids-img-side {
-      flex: 1;
-      max-width: 150px; 
-      border-radius: 12px;
+      max-width: 130px;
+      border-radius: 10px;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .kids-img-side img {
       width: 100%;
-      height: auto;
       display: block;
-      object-fit: cover;
     }
 
-    .kids-text-side {
-      flex: 1;
-    }
-
-    .kids-text-side h3 {
-      font-size: 24px;
-      color: #ff9f43;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .kids-text-side p {
-      color: #e2e8f0;
-      font-size: 16px;
-    }
-
-    /* Video Section Container (RGB Border) */
+    /* Video Demo Section */
     .video-section {
-      background: var(--tg-sec-bg);
+      background: var(--tg-card-bg);
       padding: 20px;
       border-radius: 16px;
-      margin-bottom: 40px;
-      border: 2px solid #ff0055;
-      animation: rgbGlow 6s linear infinite;
       text-align: center;
+      border: 1px solid #334155;
     }
 
-    /* Blogger ভিডিওর নিজস্ব সাইজ ও সেন্টারিং */
     .blogger-video-container {
       display: flex;
       justify-content: center;
-      align-items: center;
-      width: 100%;
-      overflow-x: auto;
     }
 
-    .blogger-video-container iframe {
-      max-width: 100%;
-    }
-
-    /* Pricing Section (RGB Border) */
-    .pricing-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 20px;
-    }
-
+    /* Modern Pricing Section */
     .pricing-card {
-      background: var(--tg-sec-bg);
+      background: var(--tg-card-bg);
       border-radius: 20px;
-      padding: 40px 35px;
-      width: 100%;
-      max-width: 520px;
-      border: 2px solid #ff0055;
+      padding: 30px 20px;
+      border: 2px solid #334155;
       text-align: center;
-      animation: rgbGlow 6s linear infinite;
+      position: relative;
     }
 
-    h2.card-title {
-      color: #60a5fa;
-      margin-bottom: 30px;
-      font-size: 26px;
-      letter-spacing: 1px;
-      border-left: none;
-      padding-left: 0;
-      justify-content: center;
-    }
-
-    /* Clean Hyperlinks for Cards */
     .plan-link {
       text-decoration: none;
       display: block;
-      margin: 14px 0;
+      margin: 15px 0;
     }
 
     .plan {
-      background: rgba(24, 37, 51, 0.8);
-      padding: 18px 20px;
+      background: #0f172a;
+      padding: 16px 20px;
       border-radius: 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: all 0.3s ease;
-      border-left: 5px solid #3b82f6;
+      border: 1px solid #334155;
+      position: relative;
+      transition: 0.3s;
     }
 
     .plan:hover {
-      transform: translateX(10px);
-      background: rgba(59, 130, 246, 0.15);
-      border-left-color: #60a5fa;
+      border-color: var(--primary-glow);
+      transform: translateY(-2px);
     }
 
-    .duration-group {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 2px;
+    .popular-plan {
+      border: 2px solid var(--accent-gold);
+      background: rgba(255, 183, 3, 0.05);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -10px;
+      right: 15px;
+      background: var(--accent-gold);
+      color: #000;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 2px 8px;
+      border-radius: 10px;
+      text-transform: uppercase;
     }
 
     .duration {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
-      color: #e0f2fe;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    /* কিনতে ক্লিক করুন বাটন টেক্সট */
-    .buy-now-text {
-      font-size: 11px;
-      background: var(--tg-accent);
       color: #fff;
-      padding: 2px 8px;
-      border-radius: 20px;
-      margin-left: 28px;
-      font-weight: normal;
     }
 
     .price {
-      font-size: 22px;
-      font-weight: 700;
-      color: #22d3ee;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary-glow);
     }
 
-    .permanent {
-      border-left-color: #a78bfa;
-      background: rgba(167, 139, 250, 0.08);
-    }
-
-    .permanent:hover {
-      border-left-color: #c4b5fd;
-      background: rgba(167, 139, 250, 0.18);
-    }
-
-    .permanent .price {
-      color: #c4b5fd;
-    }
-    
-    .permanent .buy-now-text {
-      background: #a78bfa;
-    }
-
-    .notice {
-      font-size: 12px;
-      color: var(--tg-text-muted);
-      margin-top: 20px;
-    }
-
-    /* হিট কাউন্টার সেকশন স্টাইল */
     .counter-section {
-      margin-top: 50px;
-      padding: 15px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      margin-top: 40px;
+      text-align: center;
     }
 
-    /* Responsive Mobile UI */
-    @media (max-width: 500px) {
-      .image-gallery {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 12px;
-      }
-      .image-card img {
-        height: 150px;
-      }
-      .details-box p {
-        font-size: 15px;
-      }
-      .seller-contact-btn {
-        padding: 12px 20px;
-        font-size: 14px;
-        width: 100%;
-        justify-content: center;
-      }
+    @media (max-width: 600px) {
       .kids-special-box {
         flex-direction: column;
-        gap: 15px;
         text-align: center;
       }
-      .kids-img-side {
-        max-width: 120px;
-      }
-      .how-to-buy-box h3 {
-        font-size: 18px;
-      }
-      .pricing-card {
-        padding: 30px 15px;
-      }
-      .plan {
-        padding: 14px 12px;
-      }
-      .duration {
-        font-size: 15px;
-      }
-      .price {
-        font-size: 18px;
-      }
-      .buy-now-text {
-        margin-left: 24px;
-        font-size: 10px;
+      .seller-contact-btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 16px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Bar Layout -->
+  <!-- Top Emergency Timer -->
+  <div class="timer-bar">
+    🔥 বিশেষ ছাড়ের সময় বাকি: <span id="timer">09m 59s</span> (দ্রুত আপনার প্যাকেজ বেছে নিন)
+  </div>
+
   <header>
-    <h1><i class="fab fa-telegram-plane" style="color: var(--tg-accent); margin-right: 8px;"></i> Video Store Premium</h1>
-    <p>আপনার পছন্দের প্রিমিয়াম প্যাকেজটি সিলেক্ট করুন</p>
+    <h1><i class="fab fa-telegram-plane" style="color: #00f2fe;"></i> Video Store Premium</h1>
+    <p>অফিশিয়াল ও সিকিউর সার্ভিস</p>
   </header>
 
   <div class="container">
     
-    <!-- ডিটেলস বক্স সেকশন -->
+    <!-- Top Details -->
     <div class="details-box">
-      <p><i class="fas fa-info-circle" style="color: #60a5fa; margin-right: 8px;"></i> আমাদের কাছে আপনি পাবেন সকল ধরনের ভিডিও প্যাকেজ একসাথে -
-রে*প , হি*জাবি ,লে*সবিয়ান , পি*চ্চি*দের , দেশি ,  বিদেশি প/ন ও ভাইরাল সব কালেকশন </p>
+      <p><i class="fas fa-gem" style="color: #ffb703;"></i> আমাদের কাছে পাচ্ছেন অল-ইন-ওয়ান এক্সক্লুসিভ ভিডিও প্যাকেজ কালেকশন!</p>
     </div>
 
-    <!-- সেলারের সাথে যোগাযোগ করার নতুন বাটন -->
+    <!-- Main Converting Button -->
     <div class="seller-btn-container">
       <a href="https://telegram.dog/top_seller_20" target="_blank" class="seller-contact-btn">
         <i class="fab fa-telegram-plane"></i> সেলারের সাথে সরাসরি কথা বলতে ক্লিক করুন
       </a>
     </div>
 
-    <!-- গাইড ভিডিও বক্স -->
-    <div class="how-to-buy-box">
-      <h3><i class="fas fa-question-circle"></i> কিভাবে কিনবেন ? দেখে নিন</h3>
-      <div class="blogger-video-container">
-        <iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/MzwXBQZS#ao5tDqL29NPpBnTzhBAvm4r3PN-vIf1gAS_1TzVEjOk" allowfullscreen ></iframe>
+    <!-- Trust Factors -->
+    <div class="trust-badges">
+      <div class="trust-item"><i class="fas fa-bolt"></i> ইনস্ট্যান্ট অ্যাক্সেস</div>
+      <div class="trust-item"><i class="fas fa-shield-alt"></i> ১০০% সেফ ও সিকিউর</div>
+      <div class="trust-item"><i class="fas fa-headset"></i> ২৪/৭ সাপোর্ট</div>
+    </div>
 
+    <!-- How to buy -->
+    <div class="how-to-buy-box">
+      <h3><i class="fas fa-play-circle"></i> কিভাবে কিনবেন? টিউটোরিয়াল দেখুন</h3>
+      <div class="blogger-video-container">
+        <iframe allowfullscreen class="b-hbp-video" frameborder="0" height="322" id="BLOGGER-video-f27d09ded6eb33d0-12767" src="https://www.blogger.com/video.g?token=AD6v5dxGZ74NbGD_or2oshnpKA4DdWWw55XjotnR8MaL8lJlEk7iRznBnjQXNtA3y2ruiUFKkWDBNJRTSZ99xv8rgTLMHi50yJaCByLTPBlZ5jVydAmihgNa6VjpdAo83HBUqDFCiA73&amp;origin=underworldviedo11233.blogspot.com" width="400"></iframe>
       </div>
     </div>
     
-    <!-- ছবিগুলোর আকর্ষণীয় গ্যালারি -->
-    <h2 class="section-title"><i class="fas fa-images"></i> গ্যালারি কালেকশন</h2>
+    <!-- Gallery -->
+    <h2 class="section-title"><i class="fas fa-fire"></i> জনপ্রিয় কালেকশন গ্যালারি</h2>
     <div class="image-gallery">
       <div class="image-card"><img src="https://i.ibb.co.com/5WfByYKj/IMG-20260706-111409-461.jpg" alt="Preview 1"></div>
       <div class="image-card"><img src="https://i.ibb.co.com/bMFKJrHS/IMG-20260706-111409-009.jpg" alt="Preview 2"></div>
@@ -470,85 +357,84 @@
       <div class="image-card"><img src="https://i.ibb.co.com/jk9YCfpk/IMG-20260706-111322-149.jpg" alt="Preview 7"></div>
     </div>
 
-    <!-- বাচ্চাদের স্পেশাল কালেকশন বক্স -->
+    <!-- Kids Special -->
     <div class="kids-special-box">
       <div class="kids-img-side">
-        <img src="https://i.ibb.co.com/k2PL52vt/20260706-155238.jpg" alt="20260706-155238" border="0" />
+        <img src="https://i.ibb.co.com/k2PL52vt/20260706-155238.jpg" alt="Kids Special">
       </div>
       <div class="kids-text-side">
-        <h3><i class="fas fa-child"></i> বাচ্চাদের স্পেশাল কালেকশন</h3>
-        <p>শিশুদের জন্য বিনোদনমূলক এবং শিক্ষণীয় বিশেষ ভিডিও প্যাকেজগুলো উপভোগ করতে আমাদের এই এক্সক্লুসিভ কালেকশনটি দেখতে পারেন।</p>
+        <h3 style="color: var(--accent-gold);"><i class="fas fa-child"></i> বাচ্চাদের স্পেশাল কার্টুন প্যাকেজ</h3>
+        <p>শিশুদের উপযোগী বিনোদন ও শিক্ষণীয় কন্টেন্টের বিশেষ প্যাকেজ সংগ্রহ করুন।</p>
       </div>
     </div>
 
-    <!-- ডেমো ভিডিও Iframe সেকশন -->
-    <h2 class="section-title"><i class="fas fa-play-circle"></i> ডেমো ভিডিও প্রিভিউ</h2>
+    <!-- Video Demo -->
+    <h2 class="section-title"><i class="fas fa-eye"></i> ভিডিও ডেমো প্রিভিউ</h2>
     <div class="video-section">
       <div class="blogger-video-container">
-        <iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/V3Yj0K5B#WwQsVhvhlnVcqiJShPdlF-4TgQsO0DBfKxWHF_3lTbE" allowfullscreen ></iframe>
+        <iframe allowfullscreen class="b-hbp-video" frameborder="0" height="322" id="BLOGGER-video-f6fe5cdcfd496aed-15630" src="https://www.blogger.com/video.g?token=AD6v5dy2-hymqx1qaCBll1a8KE8k3rQ1rAGAZA36pjXY5Anh0tOKZVgJ4NaAk0Yj-9UIdWGkhtc5peHNdqFazxuVx9vJRZKynQwVI5gxJWkQJKo8rnJ4euOefyTIWlrD4ZDtUIVNp7Fd&amp;origin=underworldviedo11233.blogspot.com" width="400"></iframe>
       </div>
     </div>
 
-    <!-- কিনার বিস্তারিত ও মেম্বারশিপ প্যাকেজ -->
-    <h2 class="section-title"><i class="fas fa-shopping-cart"></i> কিনার বিস্তারিত ডিটেলস</h2>
-    <div class="pricing-container">
-      <div class="pricing-card">
-        <h2 class="card-title">🌟 সদস্যতা প্যাকেজ</h2>
-        
-        <!-- ১ সপ্তাহ প্যাকেজ -->
-        <a href="https://telegram.dog/top_seller_20?text=আমি%20৭%20দিনের%20২৫০%20টাকার%20প্রিমিয়াম%20নিতে%20চাচ্ছি" target="_blank" class="plan-link">
-          <div class="plan">
-            <div class="duration-group">
-              <span class="duration"><i class="far fa-calendar-alt" style="color: #60a5fa;"></i> ১ সপ্তাহ</span>
-              <span class="buy-now-text">কিনতে ক্লিক করুন</span>
-            </div>
-            <span class="price">২৫০ টাকা</span>
-          </div>
-        </a>
-        
-        <!-- ১৫ দিন প্যাকেজ -->
-        <a href="https://telegram.dog/top_seller_20?text=আমি%20১৫%20দিনের%20৩৫০%20টাকার%20প্রিমিয়াম%20নিতে%20চাচ্ছি" target="_blank" class="plan-link">
-          <div class="plan">
-            <div class="duration-group">
-              <span class="duration"><i class="far fa-calendar-minus" style="color: #60a5fa;"></i> ১৫ দিন</span>
-              <span class="buy-now-text">কিনতে ক্লিক করুন</span>
-            </div>
-            <span class="price">৩৫০ টাকা</span>
-          </div>
-        </a>
-        
-        <!-- ১ মাস প্যাকেজ -->
-        <a href="https://telegram.dog/top_seller_20?text=আমি%20১%20মাসের%20৫০০%20টাকার%20প্রিমিয়াম%20নিতে%20চাচ্ছি" target="_blank" class="plan-link">
-          <div class="plan">
-            <div class="duration-group">
-              <span class="duration"><i class="far fa-calendar-check" style="color: #60a5fa;"></i> ১ মাস</span>
-              <span class="buy-now-text">কিনতে ক্লিক করুন</span>
-            </div>
-            <span class="price">৫০০ টাকা</span>
-          </div>
-        </a>
-        
-        <!-- পার্মানেন্ট প্যাকেজ -->
-        <a href="https://telegram.dog/top_seller_20?text=আমি%20পার্মানেন্ট%20১২৫০%20টাকার%20প্রিমিয়াম%20নিতে%20চাচ্ছি" target="_blank" class="plan-link">
-          <div class="plan permanent">
-            <div class="duration-group">
-              <span class="duration"><i class="fas fa-infinity" style="color: #c4b5fd;"></i> পার্মানেন্ট</span>
-              <span class="buy-now-text">কিনতে ক্লিক করুন</span>
-            </div>
-            <span class="price">১২৫০ টাকা</span>
-          </div>
-        </a>
+    <!-- Packages Section -->
+    <h2 class="section-title"><i class="fas fa-tags"></i> মেম্বারশিপ প্যাকেজ সিলেক্ট করুন</h2>
+    <div class="pricing-card">
+      
+      <!-- 1 Week -->
+      <a href="https://telegram.dog/top_seller_20?text=আমি%20৭%20দিনের%20২৫০%20টাকার%20প্রিমিয়াম%20নিতে%20চাচ্ছি" target="_blank" class="plan-link">
+        <div class="plan">
+          <span class="duration"><i class="far fa-clock"></i> ১ সপ্তাহ (৭ দিন)</span>
+          <span class="price">২৫০ টাকা</span>
+        </div>
+      </a>
+      
+      <!-- 15 Days -->
+      <a href="https://telegram.dog/top_seller_20?text=আমি%20১৫%20দিনের%20৩৫০%20টাকার%20প্রিমিয়াম%20নিতে%20চাচ্ছি" target="_blank" class="plan-link">
+        <div class="plan">
+          <span class="duration"><i class="far fa-calendar-alt"></i> ১৫ দিন</span>
+          <span class="price">৩৫০ টাকা</span>
+        </div>
+      </a>
+      
+      <!-- 1 Month (Popular) -->
+      <a href="https://telegram.dog/top_seller_20?text=আমি%20১%20মাসের%20৫০০%20টাকার%20প্রিমিয়াম%20নিতে%20চাচ্ছি" target="_blank" class="plan-link">
+        <div class="plan popular-plan">
+          <span class="popular-badge">সেরা পছন্দ</span>
+          <span class="duration"><i class="fas fa-star" style="color: var(--accent-gold);"></i> ১ মাস (৩০ দিন)</span>
+          <span class="price">৫০০ টাকা</span>
+        </div>
+      </a>
+      
+      <!-- Lifetime -->
+      <a href="https://telegram.dog/top_seller_20?text=আমি%20পার্মানেন্ট%20১২৫০%20টাকার%20প্রিমিয়াম%20নিতে%20চাচ্ছি" target="_blank" class="plan-link">
+        <div class="plan">
+          <span class="duration"><i class="fas fa-infinity" style="color: #a78bfa;"></i> পার্মানেন্ট (লাইফটাইম)</span>
+          <span class="price" style="color: #a78bfa;">১২৫০ টাকা</span>
+        </div>
+      </a>
 
-        <p class="notice">* যেকোনো প্যাকেজের ওপর ক্লিক করলে ক্রয়ের জন্য অটো-মেসেজ সহ টেলিগ্রাম ওপেন হবে।</p>
-      </div>
+      <p style="font-size: 12px; color: #94a3b8; margin-top: 15px;">* যেকোনো প্যাকেজে ক্লিক করলে সরাসরি সেলারের টেলিগ্রামে মেসেজ চলে যাবে।</p>
     </div>
 
-    <!-- হিট কাউন্টার সেকশন -->
+    <!-- Hit Counter -->
     <div class="counter-section">
       <div align=center><a href='https://www.counter12.com'><img src='https://www.counter12.com/img-9B7wZAzBy401Bz90-9.gif' border='0' alt='free web counter'></a><script type='text/javascript' src='https://www.counter12.com/ad.js?id=9B7wZAzBy401Bz90'></script><br><a href='https://meuip.page/qual-e-o-meu-ip/' target='_blank'><img src='https://img.meuip.page/selo-3x36W0zxyCWAcW0Z.gif' alt='veja seu ip' border='0'></a></div>
     </div>
 
   </div>
+
+  <!-- Countdown Script -->
+  <script>
+    let time = 600; // 10 minutes timer
+    const timerElement = document.getElementById('timer');
+    setInterval(() => {
+      let minutes = Math.floor(time / 60);
+      let seconds = time % 60;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+      timerElement.innerHTML = `${minutes}m ${seconds}s`;
+      if(time > 0) time--;
+    }, 1000);
+  </script>
 
 </body>
 </html>
